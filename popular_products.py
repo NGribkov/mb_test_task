@@ -1,7 +1,11 @@
+import pandas as pd
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
 #define function, 
-#input data : orders & order_line (pd.dataframes), also you can input number of lines to show (default is 10)
+#input data : orders & order_lines (pd.dataframes), also you can input number of lines to show (default is 10)
 #returns: pd.dataframe with most popular products over last month with sum price over orders, num sales, average order sum
-def popular_products(orders, order_line, num_results=10):
+def popular_products(orders, order_lines, num_results=10):
   
     date=(datetime.now()+relativedelta(months=-1)).strftime('%Y-%m-%d')
     joined = order_lines.merge(orders, on='OrderId', how='left')
